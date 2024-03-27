@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Javascript 9</title>
+
+<style>
+    .highlight{    color: red;   background-color: aqua;  font-weight: 500; }
+</style>
+
+</head>
+<body>
+
+    <h2 class="text-center text-decoration-underline">Arrow function</h2>
+    <!-- handleButtonClick -->
+    <button id="myButton">Click me!</button>        <br>
+    <!-------------------------------------------------------------------------------------------->
+    <!-- DOM manipulation -->
+    <h2 id="myheading">Hello Javascript</h2>
+    <button id="toggleBtn">Toggle</button>          <br>
+
+    <!-------------------------------------------------------------------------------------------->
+    <!-- CONDITIONAL RENDERING -->
+    <div class="container my-5 text-center" style="background-color:rgb(215, 241, 98)">
+        <h2> Conditional rendering</h2>
+        <h4 id="condRndr">Conditional rendering</h2>
+    </div>
+
+    <!-------------------------------------------------------------------------------------------->
+    <!-- THIS KEYWORD -->
+    <div class="container" style="background-color:aquamarine">
+        <h2 class="text-center">This keyword</h2>
+        <p>The 'this' keyword is a special variable that is used in functions to refer to the object that the function is called upon</p>
+        <h4>Global Context:</h4>
+        <ul>
+            <li>In the global context (outside of any function), this refers to the global object.</li>
+            <li>In a web browser, the global object is usually the window object.</li>
+            <li><pre>console.log(this);    // return window object</pre></li>
+        </ul>
+
+        <h4>Function Context:</h4>
+        <ul>
+            <li>this refers to the object that the function is a method of.</li>
+            <li><pre>
+                const person = {
+                    name:'Ishita Kirti Gautam',
+                    sayHello: function(){ 
+                        console.log(`Hiiiii, ${this.name}`);
+                    }
+                };
+                person.sayHello();
+            </pre></li>
+        </ul>
+        
+        <h4>Constructor Context</h4>
+        <ul>
+            <li>When a function is used as a constructor with the new keyword, this refers to the newly created instance.</li>
+            <li><pre>
+                function car(model){
+                    this.model = model;
+                }
+                const mycar = new Car('Tesla');
+                console.log(mycar);
+            </pre></li>
+        </ul>
+
+        <h4>Event Listener Context</h4>
+        <button id="evntlsn" class="btn btn-primary">Click me</button>
+        <ul>
+            <li>In event handlers, such as those set with addEventListener, this refers to the element that triggered the event.</li>
+            <li>
+                <pre>
+                    button id="xyz">Click me  button>
+                    document.getElementById('xyz').addEventListener('click', function() {
+                        console.log(this); // Outputs the button element
+                    });
+                    
+                </pre>
+            </li>
+        </ul>
+
+        <h4>Arrow Function Context</h4>
+
+        <ul><li>Arrow functions do not have their own this context. They inherit this from the enclosing scope.</li></ul>
+
+
+    </div>
+
+    <script>
+        let user = "Deepak gautam";
+        let greet = (name) => "Hello "+name;
+        document.write(greet('Ishu gautam'), '<br>');
+        document.write(greet(user), '<br>');
+
+
+        let multi = (a,b)=>(a*b);
+        document.write('Multiplication of 10 and 20 is : ', multi(10,20),        '<br>');
+
+        let sum = (a,b)=>(a+b);
+        document.write('Addition if 100 and 200 is : ', sum(100,300),        '<br>');
+        
+        //----------------------------------------------------------------------------------------
+        //With an arrow function this represents the owner of the function
+        const handleButtonClick = () =>{
+            alert('Arrow function handleButtonClick called');
+        }
+        const gtBtn = document.getElementById('myButton');
+        gtBtn.addEventListener("click",handleButtonClick);
+
+        //----------------------------------------------------------------------------------------
+        //DOM manipulation
+        const toggleHighlight=()=>{
+            const heading = document.getElementById('myheading');
+            heading.classList.toggle('highlight');
+            heading.innerHTML = 'Hiiiiiii';
+        }
+        const tglBtn = document.getElementById('toggleBtn');
+        tglBtn.addEventListener('click',toggleHighlight);
+
+
+        //----------------------------------------------------------------------------------------
+
+        //CONDITIONAL RENDERING
+        const isLoggedIn = true;
+        const message = isLoggedIn ? 'Welcome User' : "Please Login"
+        tag = document.getElementById('condRndr');
+        tag.innerHTML = message;
+        
+        //----------------------------------------------------------------------------------------
+
+        //THIS KEYWORD
+        //1.In Global Context
+        console.log(this);  // return us window object
+
+        //2.Function Context
+        const person = {
+            name:'Ishita Kirti Gautam',
+            sayHello: function(){ 
+                console.log(`Hiiiii, ${this.name}`);
+            }
+        };
+        person.sayHello();
+
+        //3.Constructor Context
+        function car(model){
+            this.model = model;
+        }
+
+        const mycar = new car('Tesla');
+        console.log(mycar);
+
+        //4.Event Listener Context
+        // function Elsn(){alert('Event Listener Context')}
+        function Elsn(){console.log(this)}                              // Outputs the button element
+        document.getElementById('evntlsn').addEventListener("click", Elsn);
+
+        //5.Arrow Function Context
+        const obj = {
+            name:'Deeshu',
+            sayHello: function(){
+                setTimeout(()=>{
+                    console.log(`Hello, ${this.name}`);
+                    alert(`Hello, ${this.name}`);
+                }, 3000);
+            }
+        };
+        obj.sayHello();
+
+        //----------------------------------------------------------------------------------------
+        
+
+    </script>
+    
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

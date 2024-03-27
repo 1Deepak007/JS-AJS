@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+
+    <script>
+
+//------------------------ LOOPS ---------------------------------
+                                document.write("<h3>While Loop</h3>")
+        var a = 1;
+        while(a<=4){
+            document.write("<li>"+'Value of A is : '+ a,"<br>"+"</li>");
+            a+=1;
+        }
+
+        
+                                document.write('-----------------------------------');
+                                document.write("<h3>Do While Loop</h3>")
+
+
+        var b = 1;
+        do{
+          document.write('<li>'+ 'Value of B is : '+b +'</li>');
+          b++;
+        }while(b<=4)
+
+
+                                document.write('-----------------------------------');
+                                document.write("<h3>For Loop</h3>")
+
+
+        for(var a=1; a<=4; a++){
+          document.write('Value is : '+a+'<br>')
+        }
+                                
+                                document.write('-----------------------------------');
+                                document.write("<h3>ForEach Loop</h3>")
+
+        let xa = ["Rahul","Sonu","Tommy","Usher"]
+        xa.forEach(function(value,index){
+          document.write(index,":",value,"<br>")
+        })
+
+                                document.write('<br>-----------------------------------');
+                                document.write("<h3>Break & Continue</h3>")
+
+
+        for(var a=1; a<=5; a++){
+          if(a==3){
+            continue;
+          }
+          document.write("Continue : "+a+"<br>");
+        }               
+        
+                                document.write('-----------------------------------<br>');
+
+        for(var a=1; a<=5; a++){
+          if(a==3){
+            break;
+          }
+          document.write("Break : "+a+"<br>");
+        }
+
+
+                            document.write('-----------------------------------');
+                            document.write("<h4>Exercise : Find even number</h4>")
+
+        for(var a=1; a<=20; a++){
+          if(a%2==0){                 // % <- modulus(gives remainder)    / <- Division gives quotient
+            document.write(a+",");
+          }
+        }
+
+
+        document.write('<br>-----------------------------------');
+        document.write("<h4>Nested For Loop</h4>")
+        
+        for(var j=1; j<=100; j+=10){          //<-- loop for row
+          for(var k=j; k<j+10; k+=1){
+            document.write(k,"  ");
+          }document.write("<br>");
+        }
+
+        document.write('-----------------------------------');
+
+        document.write("<h4>Nested For Loop</h4>")
+
+        for(var i=1; i<=5; i++){
+          for(var j=1; j<=i; j++){
+            document.write(j," ");
+          }document.write("<br>")
+        }
+
+        document.write('-----------------------------------<br>');
+
+        for(var i=5; i>=1; i--){
+          for(var j=i; j>=1; j--){
+            document.write(i," ");
+          }document.write("<br>")
+        }
+        
+        document.write('-----------------------------------<br>');
+
+
+
+//------------------------ ARRAYS ---------------------------------
+        document.write("<h4>ARRAYS</h4>")
+
+        var ary = [10,20,30,40,50];         var sum=0;
+
+        document.write(ary[1],"<br>");
+
+
+
+        for(i=0; i<ary.length; i++){
+          document.write(ary[i]," ");
+
+          sum+=ary[i]
+        }
+        document.write('<br>Sum of array is : ',sum,'<br>');          document.write('<br>---------------------------<br>')
+
+        //----------------------------------------------
+
+        var ary1 = ['a',1,2.2,true,null]
+        for(var i=0; i<ary.length; i++){
+          document.write(ary1[i]+'  ','<br>')
+        }                                                             document.write('<br>---------------------------<br>')
+
+        //----------------------------------------------
+
+        
+        var a = new Array();      // defifning empty array
+        a[0] = "a";   a[1] = -12;  a[2] = 1920; a[3] = 12.9;
+        for(var i=0; i<a.length; i++){
+          document.write(a[i]," , ")
+        }
+
+
+        document.write('<br>---------------------------<br>')
+
+        
+        
+        //==================> MULTIDIMENTIONAL ARRAYS
+
+        var mdary = [ ['apple','banana','cherry'],
+                      [10,  -20, 30.5],
+                      [true, false, null]
+                    ]
+        
+        for(var i=0; i<=mdary.length-1; i++){
+            document.write(mdary[i])
+            document.write('<br>')
+        }
+        document.write('---------------------------<br>')
+
+        for(var i=0; i<=mdary.length-1; i++){
+          for(var j=0; j<=mdary[i].length-1; j++){
+            document.write(mdary[i][j],",")
+          }
+        }
+        document.write('<br>---------------------------<br>')
+        document.write(mdary[1][2])
+        document.write('<br>---------------------------<br>')
+
+
+        document.write("<table border='5px'>");
+        for(var i=0; i<=mdary.length-1; i++){
+                        document.write("<tr>")
+          for(var j=0; j<=mdary[i].length-1; j++){
+                        document.write("<td>")
+            document.write(mdary[i][j])
+                        document.write("</td>")
+          }
+                        document.write("</tr>")
+        }
+
+        
+        document.write('<br>---------------------------<br>')
+        
+
+    </script>
+</head>
+<body class="bg-info">
+    
+</body>
+</html>

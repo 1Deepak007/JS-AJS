@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="#">
+        <title>JavaScript</title>
+        <script>
+            document.write('<h2>Core Javascript</h2>');
+            document.write('<br> we can write JS like this anywhere in page using script tag.<br>')
+
+
+            console.log('===========> Javascript_1 <================')
+            document.write('<br>===========> Javascript_1 <================<br>')
+
+            // this is comment
+
+            /* 
+            multi line
+            comment 
+            */
+
+            //-------------------> VARIABLES  (types -> var, let, const)
+
+            //======> let,var
+            var x = "hello"; var y = 100.20;
+
+            document.write(x, '<br>')
+            document.write(y, '<br>')
+
+            y = 200;
+            document.write(y, '<br>')
+
+            var firstName = "Deepak";
+            document.write(firstName, '<br>')
+
+            var a, b;
+            document.write(a, '<br>', b, '<br>')
+
+            var a = 10; var b = 20;
+            document.write('a = ', a, '<br>', 'b = ', b, '<br>')
+
+
+            //===> NOTE --> var vs let          we can define a variable with same name 2 times in var but not in let
+
+            var myname = 'Deepak'
+            var myname = 'Gautam'
+            document.write(myname, '<br>')
+
+            let mynamee = 'Deepak'
+            //let mynamee = 'Gautam'            //ERROR -> already defined, can't define same vari. more than one time
+            document.write(mynamee, '<br>')
+
+
+            //======> const
+            const sec = "world"
+            //const sec = "klsl"          // ERROR ->  already decleared,can't assigned value again
+
+
+
+            //==========================> DATA TYPES <=============================
+
+            var x = "hello";                            // string
+            var y = 24;                                 // number
+            var z = true;                               // boolean
+            var ary = ['HTML', 'CSS']                    // array
+            var obj = { first: 'Deepak', last: 'Gautam' }   // object     (key:'value'  pairs)
+            var nl = null;                              // null
+            var un;                                     // undefined
+            var un1 = undefined;                        // undefined         
+
+            console.log(typeof ('y'))
+
+
+
+
+            //==========================> OPERATORS <=============================
+            //  +, -, *, /, **, %(MODULUS(remailder)), ++, --
+
+            var num1 = 3; var num2 = 20; var num3 = num1 + num2
+            console.log(num3);
+            console.log(num2 + num1);
+            console.log(num2 - num1);
+            console.log(num2 * num1);
+            console.log(num2 / num1);
+            console.log(num2 % num1);             // remainder
+            console.log(num2);
+            num2++
+            console.log(num2);
+            num2--
+            console.log(num2);
+
+            console.log(10 + 20 * 2)                // 50
+            console.log((10 + 20) * 2)              // 60
+
+
+
+
+            //======================> ASSIGNMENT OPERATORS <========================
+            //  =  +=  -=  *=  /=  %=  **=
+
+            var a = 10; var b = 3; var a1 = 10; var b1 = 3;
+
+            a += b;
+            console.log(a)
+
+            a -= b
+            console.log(a)
+
+            a *= b
+            console.log(a)
+
+            a /= b
+            console.log(a)
+
+            a %= b
+            console.log(a)
+
+
+            a1 **= b1                     // ==> 10*10*10
+            console.log(a1)
+
+            //---------------------------------------------------------------------
+
+            let arry = [10, 20, 30, 40]
+            console.log(arry)
+            console.log(typeof (arry))
+
+            let ary1 = [10, 20, 30, 40]
+            console.log(ary1)
+            console.log(typeof (ary1))
+
+
+            //---------------------------------------------------------------------
+
+            // PRINTING WARNING
+            console.warn('this is a warning');
+
+            // PRINTING TIMEINTERVAL
+            console.time("timer");
+
+            console.log('Javascript is awesome');
+            console.log('Javascript is awesome');
+            console.log('Javascript is awesome');
+            console.log('Javascript is awesome');
+            console.log('Javascript is awesome');
+            console.log('Javascript is awesome');
+            console.log('Javascript is awesome');
+
+            console.timeEnd("timer");
+
+
+            document.write('<br>============================================================<br>')
+
+            x1 = document.getElementById('ssdd')
+            document.write(x1, '<br>')                      //null
+
+            //document.getElementById('ssdd').innerText   // o/p in chrome console => 'JAVASCRIPT'
+
+            //document.getElementById('ssdd').innerHTML   // o/p in chrome console => 'JAVA <span>SCRIPT</span>'
+
+
+
+
+
+            //======================> COMPARISON OPERATORS <========================
+            /*  ==      -> equal to
+                ===     -> equal value and datatype
+                !=      -> not equal to
+                !==     -> not equal value and datatype
+                >       -> greater than
+                <       -> less than
+                >=      -> greater than or equal to
+                <=      -> less than equal to
+            */
+
+            let aa = 20
+            let bb = 40
+
+            console.log(aa == bb);               // false
+            console.log(aa === bb);              // false
+            console.log(aa != bb);               // true
+            console.log(aa !== bb);              // true
+            console.log(aa > bb);                // false
+            console.log(aa < bb);                // true
+            console.log(aa >= bb);               // false
+            console.log(aa <= bb);               // true
+
+            console.log(null == undefined)      // true
+
+
+
+
+            //=====================> Logical operators <==========================
+
+            // LOGICAL AND (&&)          true when all condi are true
+
+            age = 20;
+            if (age >= 18 && age <= 21) {
+                console.log('age is between 18 to 21')
+            }
+
+            // LOGICAL OR  (||)         true when any one condi is true
+
+            if (age >= 12 || age <= 18) {
+                console.log('or operator any one condi true')
+            }
+
+            // LOGICAL NOT (!)          
+
+            if (!age > 30) {                      // statement is true but ! gives opposite or o/p which is false here to below statement not executed 
+                console.log('logical not')
+            }
+
+
+            //=============================> Ternary operator <==================================
+            // (condition) ? True Statement : False Statement
+
+            var z = 14
+            var z1;
+            // (z<20) ? z1 = "true" : z1 = "false" 
+            // or
+            z1 = (z < 20 ? "true" : "false")
+            console.log("value of z1 : ", z1)
+
+
+
+
+
+            //==========================> Conditional Statements <===============================
+
+
+            //=======> IF Else
+            a = 10; a1 = 20;
+            if (a == a1) {
+                console.log(a + ' is greater')
+            } else {
+                console.log(a1 + ' is greater')
+            }
+
+
+
+            //=======> If Elseif else
+            /*  Percentage   100-80     79-60       59-45       44-33       <33
+                Grade         Merit      1st         2nd         3rd        NotPassed */
+
+            let percentage = 78.2;
+            if (percentage > 100) {
+                console.log('Invalid')
+            } else if (percentage >= 80 && percentage <= 100) {
+                console.log('Merit');
+            } else if (percentage >= 60 && percentage <= 79) {
+                console.log('1st');
+            } else if (percentage >= 60 && percentage <= 79) {
+                console.log('2nd');
+            } else if (percentage >= 45 && percentage <= 59) {
+                console.log('3rd');
+            } else if (percentage >= 33 && percentage <= 44) {
+                console.log('4th');
+            } else {
+                console.log('Not passed this time');
+            }
+
+
+            //========> Switch statement
+            var day = 7
+            switch (day) {
+                case (1):
+                    console.log('monday')
+                    break;
+
+                case (2):
+                    console.log('tuesday')
+                    break;
+                case (3):
+                    console.log('wednesday')
+                    break;
+                case (4):
+                    console.log('thursday')
+                    break;
+                case (5):
+                    console.log('friday')
+                    break;
+                case (6):
+                    console.log('saturday')
+                    break;
+                case (7):
+                    console.log('sunday')
+                    break;
+
+                default: console.log('No match')
+            }
+
+
+
+        </script>
+    </head>
+
+    <body class="bg-info">
+        <h5 id="ssdd">JAVA <span>SCRIPT</span> </h5>
+        <script>
+//        document.write('<br> we can write JS like this anywhere in page using script tag.<br>')
+        </script>
+    </body>
+
+</html>

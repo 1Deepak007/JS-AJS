@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+  <style>
+    #bdy{
+      background-color: gray;
+    }
+
+    .m-cont{
+      background-color: #f2f2f2;
+      margin-bottom: 20%;
+    }
+
+    li{
+      display:inline;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body id="bdy">
+    
+  <div class="container my-2 m-cont">
+    <h2 class="text-center text-decoration-underline" id="head1">Document Object Model</h2>
+
+    <div class="text-center mt-4">
+        <img src="DOM.webp" class="text-center" alt="DOM IMAGE HERE" height="400px"/>
+    </div>
+
+
+    <!--                Target element by :
+                Id : document.getElementById(id) 
+                ClassName : document.getElementByClassName(name)
+                TagName  :  document.getElementByTagName(name)
+    -->
+
+    <div class="wrapper mt-5" style="border:2px solid black;">
+
+      <div id="header" style="background-color:crimson">
+        <h1>Javascript Is Awesome</h1>
+      </div>
+      <div class="menu" style="background-color:rgb(56, 39, 170)">
+          <ul class="list">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Gallary</a></li>
+            <li><a href="">Contact Us</a></li>
+          </ul>
+          <p class="list">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea officia soluta quaerat iste neque corrupti facere dignissimos officiis ducimus aliquid.</p>
+      </div>
+      
+
+      <div id="content" style="width:78% ; display:inline-block" >
+        <h2>Sub Heading</h2>
+        <img src="DOM.webp" alt="image here" height="150px" style="display:inline"/>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, architecto impedit fuga quis nulla exercitationem, omnis tenetur, mollitia recusandae iure maxime asperiores fugiat. Earum obcaecati magni eveniet odit nulla necessitatibus tenetur quod ipsam unde? Velit quae inventore quidem aliquid debitis consequuntur corrupti at nesciunt? Dolore dignissimos, quia aperiam dolorum deserunt possimus sed eum velit tenetur nam voluptatem, explicabo repellat quod ea harum voluptate maiores qui deleniti dolorem in aspernatur ipsum, a placeat fugiat? Pariatur, cupiditate eum? Sed nulla voluptatibus modi temporibus odit tempora, quia voluptatum harum reprehenderit dolores quisquam unde aperiam. Omnis beatae, voluptates quas doloremque incidunt accusantium assumenda ad possimus labore asperiores harum recusandae at cum odit voluptatum facere fuga. Sequi dolor illum consectetur officia eligendi ex vero consequuntur ducimus est possimus culpa soluta pariatur veritatis consequatur odio error quod doloremque voluptatibus, dignissimos beatae optio reprehenderit. Ab cumque ullam atque rerum hic magnam harum. Dolor ullam quisquam temporibus, cupiditate nisi nobis voluptas hic alias voluptate suscipit debitis, corporis quas. Saepe et, sint similique ab cum, excepturi veritatis consequuntur perferendis nemo quos at pariatur quasi a eos adipisci impedit numquam dicta voluptatem incidunt odit assumenda est commodi voluptate voluptatum. Tempora similique ut natus neque eius blanditiis laborum quod quae ab!</p>
+
+        
+        <ul id="list">
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, velit.</li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+          <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, fugiat.</li>
+        </ul>
+        <p class="list">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam et nesciunt saepe soluta, temporibus sunt neque voluptate harum ex earum accusantium beatae nostrum! Aperiam incidunt minus rem vero, fugit eaque?</p>
+      </div>
+
+      <div class="slider" id="slide" style="border: 2px solid black; width:20% ; display:inline-block">
+        <ul>
+          <li><a href="">HOME</a></li>
+          <li><a href="">ABOUT</a></li>
+          <li><a href="">GALLARY</a></li>
+          <li><a href="">CONTACT US</a></li>
+        </ul>
+      </div>
+
+
+      
+      <div class="abc" id='stxt' onclick="" style="background-color:aqua; text-align:center;">
+        <h3>I will set attribute class </h3>
+      </div>
+
+      <div id='' onclick="" style="background-color:palegreen; text-align:center;">
+        <h3 classList="rrr xxx">set className</h3>
+      </div>
+
+      <div class="footer" className="" style="background-color:crimson; ">
+        GautamDeepak@copyrite 2023.
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- SCRIPT -->
+  <script src="JavaScript_6.js"></script>
+</body>
+</html>

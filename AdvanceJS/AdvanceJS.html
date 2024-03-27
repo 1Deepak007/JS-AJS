@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Advance JS</title>
+
+    <!-- MODULES -->
+    <script type="module" src="./main.js"></script>
+
+    <!-- For ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body class="container">
+    <div class="container" style="background-color:aquamarine">
+        <h2 class="text-center">Variables</h2>
+        <ul>
+            <li>Var : have global scope. These can be accessed outside the block(if) block. Value can be reassigned.
+            </li>
+            <li>Let : have block scope. These can't be accessed outside the block(if) block. Value can be reassigned.
+            </li>
+            <li>Const : have block scope. Value can't be reassigned.</li>
+        </ul>
+        <script>
+            let x = 10;
+            // Var - have global scope. Var can be reassigned.                            
+            if (x == 10) {
+                var y = 'I(var) Have Global Scope'
+                console.log('Assessing inside if block : ', y)
+            }
+            console.log('Assessing outside if block : ', y)
+
+            // Let
+            let a = 100;
+            // let a = 200;      <--- Error
+            a = 1000
+            console.log('a :', a)
+            if (x == 10) {
+                let a1 = 'Hello';
+                console.log(`Let - I have block scope :  ${a1}`)
+            }
+            //console.log(`Let - I have block scope :  ${a1}`)      <-- Error
+
+
+            // Const
+            const b = "I am constant";
+            //b = 'Hii'          <--- Error
+            //const b = 'hiiii'    <--- Error
+            console.log(b);
+            if (x == 10) {
+                const b1 = "I am constant";
+                console.log('b1 : ', b1)
+            }
+            //console.log(b) //  Error: can't access outside block
+        </script>
+    </div>
+
+    <!-------------------------------------------------------------------------------------->
+
+    <div class="container" style="background-color:bisque">
+        <h2 class="text-center">Template string/lateral</h2>
+        <ul>
+            <li>use : ` string ${variable} `<br>Example : let user = 'John Doe'; console.log(`Hello "${user}"`) </li>
+            <li>Advantage is that we can use ' ' or " " inside ` `</li>
+        </ul>
+        <script>
+            let user = 'John Doe'; console.log(`Hello ${user}`);
+            let age = 35; console.log(`I am "${user}" and my age is '${age}'`);
+
+            function fullname(fname, lname) {
+                return `${fname} ${lname}`;
+            }
+            console.log(fullname("John", "Doe"));
+            //document.write(fullname("Jane", "Smith")+"<br/>");     // o/p: Jane Smith
+            console.log(`Hello ${fullname("John", "Doe")}`);
+        </script>
+    </div>
+
+    <!-------------------------------------------------------------------------------------->
+    <div style="background-color:aquamarine">
+
+        <h2 class="text-center">Normal vs Arrow Functions</h2>
+        <ul>
+            <li>Normal function</li>
+            <pre>
+            function hello(){return('Helloooo')};   console.log(hello());
+        </pre>
+            <pre>
+            let hi = function(){return('hiiiiiii')};  console.log(hi());
+        </pre>
+            <li>Arrow function</li>
+            <pre>
+            let helo= () => {return('heloowwwoooo')};   console.log(helo());
+
+            let name = 'Ishu Gautam';
+            let helo= (nme, ag) => {return(`Welcome ${nme}. Your age is  ${ag}`)};
+            console.log(helo(name,19));
+                                    <b> OR </b>
+            let wlcm = (nme,ag) => `Welcome ${nme}. Your age is  ${ag}`
+            let wlcm1 = (nme,ag) => {`Welcome ${nme}. Your age is  ${ag}`}   // use when code is multiline
+            console.log(wlcm(name,21))
+            </pre>
+        </ul>
+        <hr />
+        <script>
+            // normal function
+            function hello() { return ('Helloooo') };
+            console.log(hello());
+
+            let hi = function () { return ('hiiiiiii') };
+            console.log(hi());
+
+            // arrow function
+            let name = 'Ishu Gautam';
+            let helo = (nme, ag) => { return (`Welcome ${nme}. Your age is  ${ag}`) };
+            console.log(helo(name, 19));
+            // OR
+            let wlcm = (nme, ag) => `Welcome ${nme}. Your age is  ${ag}`
+            let wlcm1 = (nme, ag) => { `Welcome ${nme}. Your age is  ${ag}` }   // use when code is multiline
+            console.log(wlcm(name, 21))
+        </script>
+    </div>
+
+    <!-------------------------------------------------------------------------------------->
+    <div style="background-color:bisque">
+        <h2 class="text-center">Function with multiple arguments</h2>
+        <ul>
+            <li><b>Rest Operator : </b> the rest operator is represented by three dots (...). It allows you to represent
+                an
+                indefinite number of arguments as an array. The rest operator is often used in function parameter lists
+                to
+                collect the remaining arguments into a single array. <br> * It can be used to get the remaining argument
+                values after some are taken as variables.
+                <pre>
+            const [first, second, ...rest] = [1, 2, 3, 4, 5];
+            console.log(first); // Outputs: 1
+            console.log(second); // Outputs: 2
+            console.log(rest); // Outputs: [3, 4, 5]
+        </pre>
+            </li>
+            <li><b>Spread Operator : </b> is also represented by three dots (...). While the rest operator is used to
+                collect elements into an array, the spread operator is used to spread or expand elements from an array,
+                string, or object.<br> * It can be used to expand an iterable into individual elements.
+                <pre>
+            const arr1 = [1, 2, 3];
+            const arr2 = [...arr1, 4, 5, 6];
+            console.log(arr2); // Outputs: [1, 2, 3, 4, 5, 6]
+        </pre>
+            </li>
+        </ul>
+    </div>
+    <script>
+        // ARGUMENTS IN FUNCTION
+        function sum() {
+            let total = 0;
+            for (let i in arguments) {
+                total += arguments[i]
+                // console.log(typeof(arguments));     // object
+            }
+            return `Sum is : ${total}`;
+        }
+        console.log(sum(10, 20, 30, 40));
+
+        //===============> REST OPERATOR (...)   -   can be used to get the remaining argument values after some are taken as variables.
+        function add(name, ...num) {                  // ...  <-- rest operator
+            let summ = 0;
+            for (let i in num) {
+                summ += num[i]
+            }
+            return `${name} your total is : ${summ}`;
+        }
+        console.log(add('Deepak', 10, 20, 30));
+
+        function percentage(name, course, ...nums) {
+            let sum = 0;
+            for (let i in nums) {
+                sum += nums[i]
+            }
+            let perc = sum / (100 * (nums.length)) * 100;
+            return `${name}, you have completed ${course} course and your percentage is ${perc}%`;
+        }
+        console.log(percentage("Rohit", 'BCA', 96, 97, 76, 87, 89));
+
+
+        //===============> SPREAD OPERATOR (...)  - can be used to expand an iterable into individual elements.
+        let ary11 = [1, 2, 3, 4, 5];
+        //console.log(ary);       console.log(...ary);
+        function sum(msg, ...arr) {
+            let sum = 0;
+            for (let i in arr) {
+                sum += arr[i];
+            }
+            return `${msg} the sum of the array is: ${sum}`;
+        }
+        console.log(sum("Hello", ...ary11));                   // Hello will not be added as it is outside the spread operator
+
+
+        // Array concatination
+        // 1.Normal way
+        let ary1 = [10, 20]; let ary2 = [100, 200];
+        console.log(ary1.concat(ary2));
+
+        // 2.Using spread operator
+        let ary3 = [...ary1, ...ary2];
+        console.log(ary3);
+
+        let ary4 = [...ary2, ...ary1];
+        console.log(ary4);
+
+        let ary5 = [2, ...ary2, ...ary1, 1];
+        console.log(ary5);
+
+        //spread operator with objects
+        let obj1 = { fname: 'Ishu', lname: 'Gautam' }
+        let obj2 = { city: 'Nainital' }
+        let obj3 = { ...obj1, ...obj2 }
+        console.log(obj3);
+        console.log(obj3['fname'] + obj3['lname']);
+        console.log(obj3["city"]);
+    </script>
+
+
+
+    <!-------------------------------------------------------------------------------------->
+
+    <div style="background-color:aquamarine">
+        <h2 class="text-center">Object Literals & This keyword</h2>
+        <pre>
+            let person = {
+                firstName : "John", lastName : "Doe", age: 50, eyeColor  : "blue"
+            };
+            document.getElementById("demo").innerHTML = person.firstName + " " + person.lastName;
+        </pre>
+    </div>
+    <script>
+        //if varible name and property name is same then write only once in obj
+        let uname = "Ishita Kirti Gautam";
+        let obj12 = {
+            uname, course: 'MCA'
+        }
+        console.log(obj12)
+
+        let n = 'name';
+        let obj4 = {
+            [n]: "Deeshu",
+            location: 'Nainital',
+            ['area' + n]: 'Tallital',
+            //detail : function(){return `${this.name} live in ${this.areaname} area of ${this.location}`}
+            detail() { return `${this.name} live in ${this.areaname} area of ${this.location}` }
+        }
+        console.log(obj4[n]);
+        console.log(obj4.name);
+        console.log(obj4.location);
+        console.log(obj4.areaname);
+        console.log(obj4.detail());
+        //console.log(obj4['detail']());
+
+
+
+        // RETURNING OBJECT FROM FUNCTION
+        let name1 = "Dino"; let course1 = "Data science"; let lnme = 'Joe';
+        function student(fname, lname, course) {
+            let fullname = fname + lname
+            return { fullname, course };
+        }
+        console.log(student("John", "Doe", "CS"));
+
+        let s = student(name1, lnme, course1);
+        console.log(s.fullname)
+
+
+
+
+
+
+        //==============================> OBJECTS <==================================
+        var obj01 = {
+            fname: "Deepak", lname: "Gautam", b: "bat",
+            movies: ['dhoom', 'sholey', 'hatim'],
+            salary: function () { return 100000 },
+            fullname: function () { return (this.fname + " " + this.lname) },
+
+            living: { city: 'Lucknow', country: 'India' }
+        }
+
+        console.log(obj01)
+        console.log(obj01.b)
+
+        console.log(obj01.movies)
+        console.log(obj01.movies[1])
+
+        console.log(obj01.salary())
+        console.log(obj01.fullname())
+
+        console.log(obj01.living.country)
+
+
+        //-------------------------------------------------------------------------------------
+
+        // object creation
+
+        var a4 = new Object();
+        a4.firstname = "Giyan"; a4.lname = "Gigine"; a4.age = 18;
+        console.log(a4)
+        console.log(a4.age)
+        console.log(a4['firstname'])  // or 
+        console.log(a4.firstname)
+
+
+
+        //===========================> Object inside Array <===================================
+
+        let students = [
+            { name: "Ram", age: "1200" },
+            { name: "Shiv", age: "100000" },
+            { name: "Bhram", age: "1500" }
+        ];
+
+        for (let a = 0; a <= students.length - 1; a++) {
+            document.write(students[a].name + " " + students[a].age, "<br>");
+            console.log(students[a].name + " " + students[a].age);
+        }
+
+        document.write('----------------------------------------<br>')
+        //---> ASSIGNING VALUES IN CONSTANT ARRAY
+
+        const a11 = 20;       // a = 50;        // Error in reassigning value to const vari
+        const a2 = [10, 20, 30, 40]
+        a2[0] = 100;
+        console.log(a2)
+
+
+        //---> ASSIGNING VALUES IN CONSTANT OBJECT
+
+        const obja = { a: 'apple', b: 'ball' }          // we can change the values of const obj or arr but cant assign it new one
+        console.log(obja.a)
+        obja.a = "banana"
+        console.log(obja.a)
+
+
+
+        //===========================> PRINTING VALUES OF OBJECT <=================================
+
+        var obj = {
+            firstname: "Ramu", lastname: 'Kumar', age: 200, location: 'lucknow'
+        }
+
+        for (var key in obj) {
+            document.write(key + ':' + obj[key] + '<br>')
+        }
+
+
+        //================> MAP function with array
+        let b12 = [1, 2, 3, 4, 5]
+
+        function test(num) {
+            return num * 2
+        }
+
+        let c = b12.map(test);
+        console.log(c)
+
+        //---------------------------------------
+
+        let anonyfxn = function (num) {
+            return num + 100
+        }
+
+        console.log(b12.map(anonyfxn))
+
+        //================> MAP FUNCTION WITH ARRAY OF OBJECT
+        let ary = [
+            { fname: 'Ram', lname: 'kumar' },
+            { fname: 'Kisan', lname: 'singh' },
+            { fname: 'Kumar', lname: 'singh' },
+        ]
+
+        function test(x) {
+            return x.fname + " " + x.lname;
+        }
+
+        let b13 = ary.map(test)
+        console.log(b13)
+    </script>
+
+
+    <!-------------------------------------------------------------------------------------->
+
+    <div style="background-color:bisque">
+
+        <h2 class="text-center">Destructuring Array</h2>
+        <pre>
+        let myary = ['Sonu', 'Kumar', 'Lucknow'];
+        let[fnname,lname,city] = myary;
+        console.log(`${fnname} ${lname} is a student from ${city}`);
+
+        let[u_name, ...args] = myary
+        console.log(u_name);
+        console.log(...args);
+        </pre>
+    </div>
+    <script>                                                                    console.log('======>Destructuring Arrays')
+        //on simple array
+        let myary = ['Sonu', 'Kumar', 'Lucknow'];
+        let [fnname, lname, city] = myary;
+        console.log(`${fnname} ${lname} is a student from ${city}`);
+
+        let [u_name, ...args] = myary
+        console.log(u_name);
+        console.log(...args);
+
+        //on nested array
+        let myary1 = ['one', 'two', [3, 4], 'five'];
+        let [x1, y1, [a1, b1], z1] = myary1;
+        console.log('First element is : ', x1);
+        console.log('Second element is : ', y1);
+        console.log('Third element is an array containing ', a1, ' and ', b1);
+        console.log('Fourth element is : ', z1);
+
+
+        //on function
+        let fors = ['apple', 'bat', 'cat', 'dog']
+        function functest([afor, bfor, cfor, dfor]) {
+            console.log(afor, bfor, cfor, dfor);
+        }
+        functest(fors);
+
+        function functest1() { return ['Nobita', 'Doremon', 'Shezuka', 69] }
+        let [hero, enemy, heroien, code] = functest1();
+        console.log(`Hero name is: ${hero}, Enemy name is: ${enemy}. Hero has the code number ${code}`)
+    </script>
+
+    <div style="background-color:aquamarine">
+
+        <h2 class="text-center">Destructuring Objects</h2>
+        <pre>
+        let myobj = { name:'Kimonache', age:2, city:'ShinGiyang'}
+        console.log(`Name : ${name}, Age : ${age}, City : ${city}`)
+    </pre>
+    </div>
+    <script>                                                                    console.log('======>Destructuring Objects')
+        let myobj = { name: 'Kimonache', age: 2, city: 'ShinGiyang' }
+        console.log(`Name : ${name}, Age : ${age}, City : ${city}`)
+
+        let { name: nm, age: ag, city: ct } = myobj
+        console.log(`${nm} is ${ag} years old, lives in ${ct}`);
+
+
+    </script>
+
+    <!-------------------------------------------------------------------------------------->
+
+    <div style="background-color:bisque">
+
+        <h2 class="text-center text-decoration-underline ">Object Oriented Programming</h2>
+        <ul>
+            <li><b>Class : </b> is a blueprint or template for creating creating objects. It defines a set of properties
+                and
+                methods that are common to all objects of a certain kind.</li>
+            <li><b>Objects : </b>An object is an instance of a class. It has state, represented by attributes or fields,
+                and
+                behavior, represented by methods.</li>
+            <li><b>Methods : </b>Methods are functions that are defined within a class and operate on an object's state.
+                They can be used to perform operations on the object or to modify its state.</li>
+            <li><b>Classes -></b>{car}.<b> Objects -></b>{maruti,fortuner etc}.<b>Properties/Variables
+                    -></b>{color,engine,seats,ac etc}</li> <b>Methods -> </b>
+            <li>function price(tax,baseprice){totalPrice=tax+baseprice; return totalPrice}</li>
+            <li>creating method in class ->
+                <pre>
+                class hello{ 
+                    message(name){    
+                            console.log( `Hello ${name}!` );
+                    }
+                    sorry(name){
+                        console.log(`Sorry ${name}`)
+                    }
+                }
+
+                let obj = new hello();
+                obj.message('Nobita');
+            </pre>
+            </li>
+            <li><b>Constructor method : </b> It is automatically called when object is created. A constructor is a
+                special
+                method that is used for initializing and creating objects within a class or a constructor function.
+                Constructors are called when you create a new instance of an object using the new keyword.</li>
+
+            <li><b>Prototype method :</b> prototype methods are methods that are added to the prototype of a constructor
+                function. This allows all instances of that constructor function to share and use the same method.</li>
+
+            <li><b>Static method : </b>static methods are methods that are defined on the class itself rather than on
+                its
+                prototype. These methods are called on the class rather than on instances of the class. Static methods
+                are
+                useful for functionality that is related to the class as a whole and not specific to individual
+                instances.
+            </li>
+
+        </ul>
+    </div>
+    <script>
+        //------> Method in class
+        class hello1 {
+            message(name) {
+                console.log(`Hello ${name}!`);
+            }
+            sorry(name) {
+                console.log(`Sorry ${name}`)
+            }
+        }
+        let objj = new hello1();
+        objj.message('Nobita'); objj.sorry('Nobita');
+
+        //------> Constructor method
+        class constMthdCls {
+            constructor(username) {
+                this.name = username;
+                console.log('Constructor method. Automatically called.');
+            }
+            // this means the variable that is inside class have to be used
+            hi() { console.log(`Hi, I am ${this.name}`) };
+
+            static multi(a, b) {      // static method
+                console.log('Static method multi gives : ', a * b)
+            }
+        }
+        let cobj = new constMthdCls("Deeshu Gautam Kirti");
+        cobj.hi();
+        let cobj1 = new constMthdCls("Deepak Gautam");
+        cobj1.hi();
+        constMthdCls.multi(5, 6);   // calling static method
+
+
+        //------> Prototype method
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        //adding prototype method
+        Person.prototype.sayHello = function () {
+            console.log("Hi I am " + this.name + " and I'm " + this.age + " years old");
+        }
+        var personObj = new Person("John", 30);
+        personObj.sayHello();
+
+
+        //------> Static method
+        class MathsOperations {
+            add(a, b) {                   // instance method
+                return a + b
+            }
+
+            static multiply(a, b) {      // static method
+                return a * b
+            }
+        }
+        const calc = new MathsOperations();  // Creating an instance of the class
+
+        // Calling the instance method
+        const sum1 = calc.add(10, 10000);
+        console.log(sum1);
+
+        // Calling the static method    - no need to create object of class
+        const mul = MathsOperations.multiply(5, 8);
+        console.log(mul);              
+    </script>
+
+
+    <div style="background-color:bisque">
+
+        <ul>
+            <li><b>Inheritance :</b> allows one class (or object) to inherit properties and behaviors from another
+                class.
+                This promotes code reuse and establishes a relationship between classes, where a subclass can inherit
+                characteristics from a superclass.</li>
+        </ul>
+    </div>
+    <script>
+        //=======> Inheritance
+        class Employees {
+            constructor(U_name) {
+                this.unamee = U_name               // for prototype method
+                console.log("CONSTRUCTOR METHOD OF EMPLOYEE CLASS.. " + U_name)
+            }
+
+            //prototype method
+            info() {
+                //console.log('Employee name is : '+name)
+                console.log('Employee name is : ' + this.unamee)
+            }
+        }
+        console.log('------------------------------');
+        let emp1 = new Employees('Akansha');
+        emp1.info()                         // calling prototype method         
+        console.log('------------------------------');
+
+        class Manager extends Employees {
+        }
+        let manager1 = new Manager('John');
+        console.log('------------------------------');
+        manager1.info()                     // calling prototype method from child class
+
+        //--------------------------------------------------------------------------------
+
+        class NewManager extends Employees {
+            info() {
+                console.log("Constructor method of newManager class " + this.unamee);
+                super.info();              // check and calls cntrctr mthd of parent cls
+            }
+        }
+        console.log('------------------------------');
+        let objnewmngr = new NewManager('David Guitta');
+        objnewmngr.info();
+        console.log('------------------------------');
+
+
+        //--------------------------------------------------------------------------------
+
+        class hod {
+            constructor(name, age, salary) {
+                this.name = name
+                this.salary = salary
+                console.log("Constructor method of hod class");
+            }
+            info() {
+                console.log(`${this.name} have salary ${this.salary}.`);
+            }
+        }
+        let objhod = new hod('Kavita Suryavanshi', 50000);
+        objhod.info();
+
+        class teachers extends hod {
+            //constructor(name, subject) {
+            //    this.subject = subject; 
+            //    console.log('Constructor Method Of teachers Class...')
+            //}
+            info() {
+                super.info();
+                console.log(`She is a good teacher.`);
+            }
+        }
+        let net_teacher = new teachers("Sarika", 50000);
+        net_teacher.info();
+
+
+        //--------------------------------------------------------------------------------
+
+        // FOLLOW THISONE
+        class employee {
+            constructor(name, age, salary) {
+                this.empname = name;
+                this.empage = age;
+                this.empsalary = salary;
+            }
+            displayInfo() {
+                document.write(`<h3>Employee Class</h3> 
+                                Name : ${this.empname} <br>
+                                Age : ${this.empage}   <br>
+                                Salary : ${this.empsalary} <hr/>`);
+            }
+        }
+        class manager extends employee {
+            displayInfo() {
+                let ta = 1000; let pa = 500; let totalsal = this.empsalary + ta + pa;
+                document.write(`<h3>Manager Class</h3>
+                                Name : ${this.empname}              <br>
+                                Name : ${this.empage}               <br>
+                                Name : ${totalsal} <hr/>`);
+            }
+        }
+
+        let objEmp = new employee('John Smith', 28, 40000);
+        objEmp.displayInfo();
+
+        let objMang = new manager('Sally Kane', 56, 120000);
+        objMang.displayInfo();
+
+
+        class test_t extends manager {
+        }
+        let tstobj = new test_t('Yahoo', 45, 45000);
+        tstobj.displayInfo();
+
+    </script>
+
+
+    <div style="background-color:aquamarine">
+        <h2 class="text-center text-decoration-underline ">Modules</h2>
+        <ul>
+            <li>Have a look in main.js and libraryModule.js</li>
+            <li>Include modules file in html file</li>
+            <li> script type="module" src="./main.js"> /script></li>
+        </ul>
+        <li>There are two types of exports: Named Exports and Default Exports.</li>
+        <li>
+            <pre>
+                //===================> Named export
+                export function add(a, b) {
+                    return a + b;
+                }
+
+                //======> Named import 
+                import { add, PI } from './libraryModule.js';
+            </pre>
+        </li>
+        <li>
+            <pre>
+                    //===================> Default export 
+                    function prcntg(s1,s2,s3,s4,s5){
+                        return("You scored : "+  (s1+s2+s3+s4+s5)/500*100  +"%");
+                    }
+                    
+                    function total(num1, num2){
+                        return(`Sum of ${num1} and ${num2} is : ` + (num1 + num2));
+                    }
+                    
+                    // # Note : We can't use multiple export default.
+                    // export default prcntg;       //<--- for default exp single fxn
+                    export default {prcntg,total};  //<--- for default exp multiple fxn
+                    
+                    //======>  default import multiple fxns
+                    import defimports from './libraryModule.js';          
+                    console.log(defimports.total(10,90));
+                    console.log(defimports.prcntg(90,90,90,90,91));
+                </pre>
+        </li>
+        </ul>
+    </div>
+
+
+    <div style="background-color:bisque">
+        <h2 class="text-center text-decoration-underline ">setTimeout()</h2>
+        <ul>
+            <li>The setTimeout() method executes a block of code after the specified time. The method executes the code
+                only once.</li>
+            <li>Syntax -> setTimeout(function, milliseconds);</li>
+            <li>function - a function containing a block of code</li>
+            <li>milliseconds - the time after which the function is executed</li>
+        </ul>
+        <h6 id="stmot">hi</h6>
+        <script>
+            function showMessage() { document.getElementById('stmot').innerHTML = "This function demonstrate settimeout" }
+            setTimeout(showMessage, 3000);
+        </script>
+        <hr />
+        <h5 class="text-center">Below is another fxn to demonstrate settimeout</h5>
+        <pre>setTimeout(()=>{alert('This is settimeout demo. I came after 3 seconds.')},3000);</pre>
+        <script>
+            setTimeout(() => { alert('This is settimeout demo. I came after 3 seconds.') }, 3000);
+
+            //----------------------------------------------------------
+
+            // DISPLAY TIME AFTER EVERY 3 SECONDS
+            function showTime() {
+                let dateTime = new Date();
+                let time = dateTime.toLocaleTimeString();
+                console.log(time);
+                setTimeout(showTime, 3000)
+            }
+            //showTime();
+        </script>
+    </div>
+    <div style="background-color:aquamarine">
+        <h2 class="text-center text-decoration-underline ">clearTimeout()</h2>
+        <ul>
+            <li>As you have seen in the above example, the program executes a block of code after the specified time
+                interval. If you want to stop this function call, you can use the clearTimeout() method.</li>
+            <li>Syntax -> clearTimeout(intervalID);</li>
+        </ul>
+        <script>
+            let count = 0;
+            function increaseCount() {
+                count += 1;
+                document.getElementById('ctot').innerHTML = count;
+            }
+            let clrtot = setTimeout(increaseCount, 3000);
+            clearTimeout(clrtot);
+            console.log('Cleartimeout stopped');
+        </script>
+    </div>
+
+
+    <div style="background-color:bisque">
+        <h2 class="text-center text-decoration-underline ">CallBack</h2>
+        <ul>
+            <li>A callback function is a function passed as an argument to another function and executed or called back
+                at some point by the function</li>
+            <li>JavaScript functions are executed in the sequence they are called. Not in the sequence they are defined.
+            </li>
+        </ul>
+        <h6 id="clbk"></h6>
+        <hr />
+        <h4 id="cl_bk"></h4>
+        <script>
+            function callbackFunc(fxn) {
+                document.getElementById('clbk').innerHTML = `I'm callback function. <br>` + fxn;
+            }
+            function additionn(num1, num2) {
+                let sum = num1 + num2;
+                callbackFunc(`Sum of ${num1} and ${num2} is : ${sum}`);
+            }
+
+            additionn(10, 5);
+
+            //---------------------------------------------------------------------------------
+
+            const myarry = [10, 50, -10, -5, 7, 5, -90];
+            // Call removeNeg with a callback
+            const posNums = removeNegative(myarry, (x) => x >= 0);
+            // Display result
+            document.getElementById("cl_bk").innerHTML = posNums;
+            // keep only +ve  numbers
+            function removeNegative(nums, callback) {
+                const newArr = [];
+                for (const x in nums) {
+                    if (callback(x)) {
+                        newArr.push(x);
+                    }
+                }
+                return newArr
+            }
+        </script>
+    </div>
+
+
+
+
+    <div style="background-color:aquamarine">
+        <h3 class="text-center">Promise</h3>
+        <p>A promise is a good way to handle asynchronous operations. It is used to find out if the asynchronous
+            operation is successfully completed or not.<br>A promise may have one of three states.</p>
+        <ul>
+            <li>Pending : A promise starts in a pending state. That means the process is not complete.</li>
+            <li>Fulfilled : If the operation is successful, the process ends in a fulfilled state.</li>
+            <li>Rejected : And, if an error occurs, the process ends in a rejected state.</li>
+            <li>Promise() ==> resolve() ==> then() </li>
+            <li>Promise() ==> reject() ==> catch() </li>
+        </ul>
+    </div>
+    <!-- Imported url(script) above in page for using ajax in below [AjaxJsonPromis()]-->
+    <script>
+        let prom = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                if (resolve) {
+                    resolve("Things are resolved");
+                }
+                else {
+                    reject("Things are yet to be resolved");
+                }
+            }, 2000)
+        });
+        let onFulfill = (result) => { console.log(result); }
+        let onRejec = (error) => { console.log(`Opps! ${error}`); }
+        prom.then(onFulfill);
+        prom.catch(onRejec);
+
+        //or 
+
+        function promi(complete) {
+            return new Promise(function (resolve, reject) {
+                console.log("Faetching data.... please wait!")
+                setTimeout(() => {
+                    if (complete) {
+                        resolve("I am successfull.")
+                    } else {
+                        reject("Yes not successfull.")
+                    }
+                }, 3000);
+            });
+        }
+
+        promi(true).then((result) => {
+            console.log(result);
+        }).catch((error) => {
+            console.log(error);
+        });
+
+        //-----------------------------------------------------------------
+
+        function divi(a, b) {
+            return new Promise(function (resolve, reject) {
+                console.log("Faetching data.... please wait!")
+                var c = a / b;
+                setTimeout(() => {
+                    if (a, b) {
+                        resolve(`Division of ${a} and ${b} is ${c}`);
+                    } else {
+                        reject("Failed to calculate.")
+                    }
+                }, 1000);
+            });
+        }
+
+        divi(5, 0).then((result) => {
+            console.warn(result);
+        }).catch((error) => {
+            console.warn(error);
+        });
+
+
+        //------------------------------------------------------------------
+
+        // Realtime example with jquery                 https://jsonplaceholder.typicode.com/posts
+        function AjaxJsonPromis() {
+            return new Promise(function (resolve, reject) {
+                console.log('Data is being fetched....');
+                setTimeout(() => {
+                    $.get(
+                        "https://jsonplaceholder.typicode.com/posts", function (data) {
+                            console.log(data);
+                        }).fail(err => { reject("Failed to load json") })
+                }, 2000)
+            });
+        }
+        AjaxJsonPromis().then((result) => { console.log(result); }).catch((error) => { console.log(error) });
+
+    </script>
+
+
+    <div class="container" style="background-color:aquamarine">
+        <h3 class="text-center">Promise.all()</h3>
+        <ul>
+            <li>This is fxn for checcking multiple promises.</li>
+            <li>If all promises are resolved -> then() else reject() called.</li>
+            <li>then() ==> executes if all promises are resolved.</li>
+            <li>catch() ==> executes if any promises is rejected.</li>
+        </ul>
+        <script>
+            let p1 = new Promise(function (resolve, reject) {
+                console.warn('first promise has resolved');
+                resolve('FIRST', 10)
+            });
+            let p2 = new Promise(function (resolve, reject) {
+                console.warn('second promise has resolved');
+                resolve('SECOND', 20)
+            });
+            let p3 = new Promise(function (resolve, reject) {
+                console.warn('third promise has resolved');
+                resolve('THIRS', 30)
+            });
+
+            Promise.all([p1, p2, p3]).then((result) => {
+                for (var i in result) { total += result[i] }
+                console.log(`Results: ${result}`)
+                console.log(`Total: ${total}`)
+            }).catch((error) => {
+                console.log(`Result: ${error}`)
+            });
+        </script>
+        <hr />
+
+        <script>
+            let promiceCall = function (returnData, message) {
+                return function (resolve, reject) {
+                    setTimeout(() => {
+                        console.log(`->This ${message} promise has resolved`);
+                        resolve(returnData);
+                    }, returnData * 100);
+                }
+            }
+
+            let p4 = new Promise(promiceCall(10, "1st"))
+            let p5 = new Promise(promiceCall(10, "2nd"))
+            let p6 = new Promise(promiceCall(10, "3rd"))
+            let p7 = new Promise(function (resolve, reject) { resolve(" 4th Promise has rejected") })
+
+            var total = 0;
+            Promise.all([p4, p5, p6, p7]).
+                then((result) => {
+                    for (var i in result) {
+                        total += result[i]
+                    }
+                    console.log(`Results : ${result}`);
+                    console.log(`Total : ${total}`);
+                }).catch((error) => {
+                    console.warn("Error : " + { error });
+                })
+
+            //--------------------------------------------------------------------------------
+
+            function fetchData() {
+                return new Promise((resolve, reject) => {
+                    // Simulating an asynchronous operation (e.g., fetching data from an API)
+                    setTimeout(() => {
+                        const data = $.get('https://jsonplaceholder.typicode.com/posts');
+                        resolve(data);        // Resolve the Promise with the fetched data
+
+                        // Uncomment the following line to simulate a failure (rejection) of the Promise
+                        // reject(new Error('Failed to fetch data!'));
+                    }, 2000);                    // 2 second delay
+                })
+            }
+            fetchData()
+                .then(result => { console.log(result.message); })
+                .catch(error => { console.error(error.message); })
+                .finally(() => { console.log('Promise completed, regardless of success or failure.') })
+
+
+            //--------------------------------------------------------------------------------
+
+
+            function fetchData() {
+                return new Promise((resolve, reject) => {
+                    // Simulating an asynchronous operation (e.g., fetching data from an API)
+                    setTimeout(() => {
+                        const data = { message: 'Data fetched successfully!' };
+                        // Resolve the Promise with the fetched data
+                        resolve(data);
+                        // Uncomment the following line to simulate a failure (rejection) of the Promise
+                        // reject(new Error('Failed to fetch data!'));
+                    }, 2000); // Simulating a delay of 2 seconds
+                });
+            }
+
+            // Using the Promise
+            fetchData()
+                .then(result => {
+                    console.log(result.message);
+                })
+                .catch(error => {
+                    console.error(error.message);
+                })
+                .finally(() => {
+                    console.log('Promise completed, regardless of success or failure.');
+                });
+        </script>
+    </div>
+
+
+
+    <div class="container" style="background-color:bisque">
+        <h3 class="text-center text-decoration-underline">AJAX - Asynchronous Javascript And XML</h3>
+        <ul>
+            <li>Ajax enables the exchange of data between a web browser and a web server without requiring a full page
+                reload.</li>
+            <li>Dynamic Content Loading: Ajax is commonly used to load additional content into a web page dynamically.
+                This can include updating a portion of a page with new data without reloading the entire page.</li>
+            <li>Form Submission: Instead of traditional form submissions that reload the entire page, Ajax can be used
+                to send form data to the server asynchronously, allowing for feedback and updates without a full page
+                refresh.</li>
+            <li>Auto-Complete Suggestion</li>
+            <li>Updating User Interfaces: Ajax enables developers to update parts of a web page in response to user
+                actions, such as clicking a button or interacting with a dropdown menu.</li>
+            <li>Status Codes & Meaning : <b>200:'OK' , 403:'Forbidden' , 404:'Not Found'</b></li>
+        </ul>
+
+        <!--============== LOADING DATA FROM SERVER/FILE USING AJAX =============-->
+        <h4 id="demo">Here we load data.</h4>
+        <button onClick="loadData()">Get Data</button>
+
+        <p id="jsondemo">Here we load Json data.</p>
+        <button onClick="loadJsonData()">Get Json</button>
+
+        <script>
+            function loadData() {
+                var xhttps = new XMLHttpRequest();
+                xhttps.onreadystatechange = function () {     // keeps on checking server responce is received or not
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("demo").innerHTML = this.responseText;
+                    } else if (this.readyState == 4 && this.status == 404) {
+                        document.getElementById("demo").innerHTML = "File not found";
+                    }
+                }
+                xhttps.open("GET", "./testfile.txt", true);   // method name, file to access, async mode (true/false) - it mean we can do our funter work while data is fetched in background
+                xhttps.send();                              // send request to server
+            }
+
+            function loadJsonData() {
+                var obj = new XMLHttpRequest();
+                obj.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("jsondemo").innerHTML = this.responseText;
+                        console.log(this.responseText);
+                    } else if (this.readyState == 4 && this.status == 404) {
+                        document.getElementById("jsondemo").innerHTML = "Problem loading JSON data";
+                        console.log("Problem loading JSON data");
+                    }
+                }
+                obj.open('GET', "https://jsonplaceholder.typicode.com/posts", true);
+                // console.log('GET',"https://jsonplaceholder.typicode.com/posts",true);
+                obj.send();
+            }
+        </script>
+
+    </div>
+    <div class="container my-3" style="background-color:aquamarine">
+        <h3 class="text-center text-decoration-underline">Javascript Fetch Methods</h3>
+        <p><b>Fetch() :</b> Is used to Insert, Update, Read or Delete data from server.</p>
+        <pre>
+            Syntax =>  fetch(file/url).then(function(response){    <----- Promise
+                         return responce.data })     <----- data can be either text or json
+                        .then(function(result){
+                            console.log(result);
+                        }).catch(function(error){
+                            console.log(error);
+                        })
+        </pre>
+
+        <script>
+            //READING TEXTFILE
+            fetch("./testfile1.txt")
+                .then((response) => {
+                    console.log(response);
+                    return response.text();
+                })
+                .then((data) => { console.log(data); })
+
+
+            //READING JSON FILE
+            fetch("https://jsonplaceholder.typicode.com/users")
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+                .catch((error) => console.log("Can't Fetch data.", error));
+
+
+            //Fetch JSON
+            fetch("./students_data.json")
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+
+                    //for(let x in data){
+                    //    let a = `${data[x].name} - ${data[x].age} - ${data[x].city} <br>`;
+                    //    document.write(a);
+                    //}
+                });
+        </script>
+
+        <h3 class="text-decoration-underline">Insert Data to server</h3>
+        <ul>
+            <li>"POST" : used when we have to insert data in server.</li>
+            <li>"GET" : used when we have to read data from server.</li>
+            <li>"PUT" : used when we have to update server data.</li>
+            <li>"DELETE" : used when we have to delete server data.</li>
+        </ul>
+
+        <pre>
+            fetch(file/URL,{
+                method:"POST",      <------ "PUT","DELETE","GET"
+                body:data,          <------ Form Data/Json Data.text
+                header:{
+                    'Content-Type':'application/json'   <----- For Json Data 
+                        //or use below for form data as you require
+                    'Content-Type':'application/x-www-form-urlencoded'    
+
+                },
+            });
+        </pre>
+
+    </div>
+</body>
+
+
+</html>

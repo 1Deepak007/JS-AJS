@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javascript Revision</title>
+
+
+        <script>
+            "use strict";
+
+            document.write("<h1>I am learning JS.</h1>")
+
+            let a = 10;
+            console.log(a)
+            //  let a = 20;   gives error 
+
+            var b = 20;
+            console.log(b)
+            var b1 = 30;
+            console.log(b)
+
+            let c = a + b
+            console.log(c)
+
+            // JS datatypes : numbers, objects, booleans, string, undefined, null, functions
+
+
+            //============> functions
+            function add(num1, num2) {
+                console.log(num1 + num2)
+            }
+
+            add(100, 20)
+
+
+            //============> objects
+            let obj = {
+                a: "apple",
+                b: "ball",
+                func: function myfunc(number) {
+                    console.log("the number is " + number);
+                }
+            }
+            // to access fxn of object obj write  obj.func(any number here)    in console   
+            console.log(obj.a);
+
+
+            //===========> Events
+            document.addEventListener("click", function click() {
+                console.log("clicked")
+                //alert("You clicked")
+                let conf = confirm("Are you sure");
+                console.log(conf);
+            });
+
+
+
+            //===========> Array
+
+            let arr = [10, 203, 30, 204];
+            for (let i = 0; i < arr.length; i++) {
+                console.log(arr[i]);
+            }
+
+            var emp = ["Sonoo", "Vimal", "Ratan"];
+            for (let i = 0; i < emp.length; i++) {
+                document.write(emp[i] + "<br/>");
+            }
+
+            //===========> this 
+
+            let ary = [10,20,30,40,50]
+            console.log(this)
+
+            let total = 0
+            function sum([num]){
+                for (let i=0; i<num.length; i++){
+                    total = total+ num[i]
+                }
+                console.log(total);
+            }
+
+            sum([ary]);
+
+            
+
+            
+
+        </script>
+    </head>
+
+    <body>
+        <h3>J@V@ SCRIPT</h3>
+    </body>
+
+</html>

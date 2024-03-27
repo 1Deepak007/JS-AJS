@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+
+    <script>
+        //=====================> Modifying arrays <=========================
+
+        var a = ["Kia",400000,"Pune","India"]
+        console.log(a,"<br>")
+
+        delete(a[0])                    // value on a[0] is deleted and set to undefined
+
+        console.log(a,'<br>')
+        console.log(a[0],'<br>')     // op-> undefined
+
+        
+        //========================> Array Methods <=========================
+
+        let a1 = ['Nimo','Doremon','Sinchain','Haagemaru'];
+        console.log(a1);                               
+        console.log(a1.sort());                        
+        console.log(a1.reverse());                     
+        
+        a1.push('Kushikame')        //add at last
+        console.log(a1);                               
+
+        a1.pop()                    //delete last element
+        console.log(a1);                               
+
+        a1.shift()                  //delete first element
+        console.log(a1);                               
+        
+        a1.unshift('Apple')         //add at pos 0
+        console.log(a1);                               
+
+
+        let ar1 = ['abb', 'bcc'];     let ar2 = ['cdd','dff'];
+        console.log(typeof(ar1),"<br>")
+        console.log(Array.isArray(ar1));
+        nwar = ar1.concat(ar2)                      //concat fxn
+        
+        console.log(nwar);                             
+        console.log(typeof(nwar));                  //typeof fxn    
+
+        let var1 = ar1.concat(10,'20')
+        console.log(var1);                             
+
+        let ar = [10,20,30,40];  
+        console.log(ar.join("+"));                  //join fxn
+
+
+
+        //-------------------> ARRAY SLICING 
+        let ar3 = ['a','b','c','d','e','f'];
+        nar3 = ar3.slice(0,2);
+        console.log(nar3);
+
+        nar33 = ar3.slice(-2);
+        console.log(nar33);
+
+        ar3.splice(2,0,'NN');               // 0 indicate -> add MM & shift other items 1 index further
+        console.log(ar3);
+
+        ar3.splice(2,1,'MM');               // 1 indicate delete/replace  item  with MM
+        console.log(ar3);
+
+        ar3.splice(1,3)
+        console.log(ar3);
+        //splice(start index, no. of elmnt to del, values to be added )  
+        ar3.splice(-1,1,'val')             // del last item n append val
+        console.log(ar3);
+
+        ar3.splice(2,2,"H","I");
+        console.log(ar3)
+
+
+
+        // ---> isArray()
+        var a = ["apple","bat","coffee",'deepak',"bat","coffin"];
+        var a11 = "kmsd";
+
+        console.log(Array.isArray(a));
+        console.log(Array.isArray(a11));
+
+
+        //============> indexOf() and lastIndexOf()  includes() some() every() <===============
+
+        console.log(a.indexOf("coffee"));           // index of coffee
+        console.log(a.lastIndexOf('bat'));          // last index of bat
+        console.log(a.includes('bat'));             // value exist -> true
+        console.log(a.includes('Bat'));             // value not exist -> false   (case sensitive)
+        console.log(a.includes('had'));             // value not exist -> flase
+        
+        var ages = [21,30,24,65,82,75]
+        var adAge = 76;
+        var x = ages>=adAge;            // if anywhere condition is true is gives true
+        console.log(x);
+
+
+        function checkAdult(age){
+            return age >=18;        
+        }
+        console.log(checkAdult(12));        // return first value >= 18
+
+        indx = ages.findIndex(checkAdult)           // first value that is true (age >=18)
+        console.log(indx);
+
+        var x = ages.every(checkAdult);             // check all the values are greater if yes -> true else false
+        console.log(x);
+
+        var y = ages.some(checkAdult);              // check if at least any one vaue is greater
+        console.log(y)
+
+
+
+        function myFunction(value, index, array) {
+            return value > 18;
+            }
+        const numbers = [4, 9, 16, 25, 29];
+        let res = numbers.findIndex(myFunction);
+        console.log(res)
+
+        
+
+
+
+        // FILTER FUNCTUON              -> return all values that satisfy the conditions     -> returns array
+        function nwadlt(ag) {
+            return ag >= 40;
+        } 
+        let fnum = ages.filter(nwadlt)
+        console.log(fnum)
+        
+
+        // tostring method             array --to--> string
+        var a = ["apple","bat",'cat','mat']
+        let na  = a.toString()
+        console.log(na)
+        console.log(typeof(na))
+
+
+        //valueOf
+        console.log(a)
+        console.log(a.valueOf())        // just return value
+
+        //fill()
+        a.fill('bird')
+        console.log(a)
+
+
+
+    </script>
+</head>
+<body class="bg-info">
+    <h2 class="text-center">Array Sclicing Filter</h2>
+</body>
+</html>

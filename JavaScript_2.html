@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+
+
+        <script>
+            console.log('===========> Javascript_2 <================<br>')
+            document.write('===========> Javascript_2 <================<br>')
+
+            //======================> ALERT <======================>
+            // alert("hiiiiiiiiiiiiiii")
+
+            //--------------------------------------
+
+            // var a = 10
+            // var b = 2
+            // if (a>b){
+            //     alert(a+' is greater')
+            // }else{
+            //     alert(b+' is greater')
+            // }
+
+
+            //===================> CONFIRM BOX <=====================
+            // var a1 = confirm("Do you like math ?")          //alert box with  ok or cancel buttons
+            // alert(a1)                                   // ok == true       cancel == false
+
+            //--------------------------------------
+
+            // if(a1){                      
+            //     alert("thanks")
+            // }else{
+            //     alert("no thanks")
+            // }
+
+
+            //===========> PROMPT BOX (get value from user) <========
+
+            // var a = prompt("Your name ?")
+            // alert("Hello "+a)
+
+            //--------------------------------------
+
+            // percentage = prompt("Whet is your percentage : ");
+            // if (percentage >100){
+            //     alert('Invalid')
+            // }else if(percentage >= 80 && percentage <=100){
+            //     alert('Merit');
+            // }else if(percentage >= 60 && percentage <= 79){
+            //     alert('1st');
+            // }else if(percentage >= 60 && percentage <= 79){
+            //     alert('1st');
+            // }else if(percentage >= 45 && percentage <= 59){
+            //     alert('2nd');
+            // }else if(percentage >=33 && percentage <= 44){
+            //     alert('3rd');
+            // }else{
+            //     alert('Not passed this time');
+            // }
+
+
+
+
+
+
+            //=============================> FUNCTIONS <=========================================
+
+            // function add(a,b){
+            //     document.write('Addition of '+a+' and '+b+' is : ',a+b)
+            // }
+
+            // a1 = prompt("Enter value of a : ")
+            // b1 = prompt("Enter value of b : ")
+            // a1 = Number(a1)
+            // b1 = Number(b1)
+
+            // // alert("Addition of "+a1+" and "+b1+" is : "+(a1+b1))
+
+            // add(a1,b1)              // calling fxn
+
+
+
+
+            //====================> Function with return value
+
+            function fullname(fname = "fname", lname = 'lname') {
+                var f = fname + " " + lname
+                return f;
+            }
+
+            var fn = fullname('deepak', 'gautam')
+            document.write(fn, '<br>')
+
+            //------------------------------
+
+            function sum(math, english, science) {
+                var s = math + english + science
+                return s
+            }
+
+            function percentage(tt) {
+                var per = tt / 3 * 100;
+                document.write("total percentage : ", per, "<br>")
+            }
+
+
+            var x = sum(90, 95, 98);
+            percentage(x, '<br>');
+
+
+
+
+            //========================> Global / Local variables
+
+            var a = "Hello Bro";         //Global variable
+
+            function hello() {
+                var a = "Hello world";
+                document.write(a, "<br>");
+            }
+            hello();
+
+
+            function btnClk(){
+                alert('Button click event')
+            }
+
+            function mouseOver(){
+                alert('Mouse hover event')
+            }
+
+            function onContextMenu(){
+                alert('On Context Menu Event')
+            }
+
+            function OnMouseEnter(){
+                alert('On mouse enter event')
+            }
+
+            function OnMouseOut(){
+                alert('On mouse out event')
+            }
+
+
+
+            //========================> Events
+            //                 Mouse events:
+            //    Event Performed	    Event Handler	Description
+            //    click	            onclick	            When mouse click on an element
+            //    mouseover	        onmouseover	        When the cursor of the mouse comes over the element
+            //    mouseout	        onmouseout	        When the cursor of the mouse leaves an element
+            //    mousedown	        onmousedown	        When the mouse button is pressed over the element
+            //    mouseup	        onmouseup	        When the mouse button is released over the element
+            //    mousemove	        onmousemove	        When the mouse movement takes place.
+
+            //                Keyboard events:
+            //    Event Performed	    Event Handler	Description
+            //    Keydown & Keyup	    onkeydown   	When the user press and then release the key
+            //                        & onkeyup
+
+            //                Form events:
+            //    Event Performed	    Event Handler	Description
+            //    focus	                onfocus	        When the user focuses on an element
+            //    submit	            onsubmit	    When the user submits the form
+            //    blur                  onblur	        When the focus is away from a form element
+            //    change	            onchange	    When the user modifies or changes the value of a form element
+
+            //                Window/Document events:
+            //    Event Performed	    Event Handler	Description
+            //    load	                onload	        When the browser finishes the loading of the page
+            //    unload	            onunload	    When the visitor leaves the current webpage, the browser unloads it
+            //    resize	            onresize	    When the visitor resizes the window of the browser
+            
+
+
+        </script>
+    </head>
+
+    <body  class="bg-info">
+        <div class="container">
+            <button onclick="btnClk()" class="btn btn-success">Button Click Event</button>              <br><br>
+            
+            <p onmouseover="mouseOver()"> Mouse Over Event</p>                   <br><br>
+
+            <p oncontextmenu="onContextMenu()"> oncontextmenu RightClickMe</p>        <br><br>
+
+            <p onmouseenter="OnMouseEnter()"> On Mouse Enter</p>                 <br><br>
+
+            <p onmouseout="OnMouseOut()"> On Mouse Out</p>                 <br><br>
+        </div>
+
+
+        
+    </body>
+
+</html>

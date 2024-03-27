@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+
+        <script>
+
+            //==============================> OBJECTS <==================================
+            var obj = {
+                fname: "Deepak", lname: "Gautam", b: "bat",
+                movies: ['dhoom', 'sholey', 'hatim'],
+                salary: function () { return 100000 },
+                fullname: function () { return (this.fname + " " + this.lname) },
+
+                living: { city: 'Lucknow', country: 'India' }
+            }
+
+            console.log(obj)
+            console.log(obj.b)
+
+            console.log(obj.movies)
+            console.log(obj.movies[1])
+
+            console.log(obj.salary())
+            console.log(obj.fullname())
+
+            console.log(obj.living.country)
+
+
+            //-------------------------------------------------------------------------------------
+
+            // object creation
+
+            var a = new Object();
+            a.firstname = "Giyan"; a.lname = "Gigine"; a.age = 18;
+            console.log(a)
+            console.log(a.age)
+            console.log(a['firstname'])  // or 
+            console.log(a.firstname)
+
+
+
+            //===========================> Object inside Array <===================================
+
+            let student = [
+                { name: "Ram", age: "1200" },
+                { name: "Shiv", age: "100000" },
+                { name: "Bhram", age: "1500" }
+            ];
+
+            for (let a = 0; a <= student.length - 1; a++) {
+                document.write(student[a].name + " " + student[a].age, "<br>");
+                console.log(student[a].name + " " + student[a].age);
+            }
+
+            document.write('----------------------------------------<br>')
+            //---> ASSIGNING VALUES IN CONSTANT ARRAY
+
+            const a11 = 20;       // a = 50;        // Error in reassigning value to const vari
+            const a2 = [10, 20, 30, 40]
+            a2[0] = 100;
+            console.log(a2)
+
+
+            //---> ASSIGNING VALUES IN CONSTANT OBJECT
+
+            const obja = { a: 'apple', b: 'ball' }          // we can change the values of const obj or arr but cant assign it new one
+            console.log(obja.a)
+            obja.a = "banana"
+            console.log(obja.a)
+
+
+
+            //===========================> PRINTING VALUES OF OBJECT <=================================
+
+            var obj = {
+                firstname: "Ramu", lastname: 'Kumar', age: 200, location: 'lucknow'
+            }
+
+            for (var key in obj) {
+                document.write(key + ':' + obj[key] + '<br>')
+            }
+
+
+            //================> MAP function with array
+            let b = [1, 2, 3, 4, 5]
+
+            function test(num) {
+                return num * 2
+            }
+
+            let c = b.map(test);
+            console.log(c)
+
+            //---------------------------------------
+
+            let anonyfxn = function (num) {
+                return num + 100
+            }
+
+            console.log(b.map(anonyfxn))
+
+            //================> MAP FUNCTION WITH ARRAY OF OBJECT
+            let ary = [
+                { fname: 'Ram', lname: 'kumar' },
+                { fname: 'Kisan', lname: 'singh' },
+                { fname: 'Kumar', lname: 'singh' },
+            ]
+
+            function test(x) {
+                return x.fname + " " + x.lname;
+            }
+
+            let b1 = ary.map(test)
+            console.log(b1)
+
+
+
+
+            //============================> STRING METHODS <=================================
+
+            let str1 = "    Java     Script    ";
+            console.log(str1)
+            console.log(str1.trim())
+            console.log(str1.replace(/\s+/g, ''))
+
+            let str2 = "Hello"; let str3 = "Mini";
+            let cnct = str2.concat(str3)
+            console.log(cnct)
+
+            let num = 2000
+            console.log(typeof (num))
+
+            let num1 = num.toString()
+            console.log(num1)
+            console.log(typeof (num1))
+            console.log(num1.valueOf())
+
+
+            let str = "Javascript is very good language, it is very usefull.";
+            console.log(str.length)                     // 53
+            console.log(str.toUpperCase())              // JAVASCRIPT IS VERY GOOD LANGUAGE, IT IS VERY USEFULL.
+            console.log(str.toLowerCase())              // javascript is very good language, it is very usefull.
+            console.log(str.includes('is'))             // true
+            console.log(str.startsWith('J'))            // true
+            console.log(str.endsWith('ges'))            // false
+            console.log(str.search('ge'))               // 30
+            console.log(str.search('yes'))              // -1
+            console.log(str.match('od'))                // ['od', index: 21, input: 'Javascript is very good language, it is very usefull.', groups: undefined]
+            console.log(str.indexOf('a'))               //  1
+            console.log(str.lastIndexOf('a'))           // 29
+            console.log(str.replace('is', 'are'))        // Javascript are very good language, it is very usefull.
+            console.log(str.charAt(5))                  // c
+            console.log(str.charCodeAt(1))              // 97       -> return askii code
+            console.log(str.split(' '))                 // ['Javascript', 'is', 'very', 'good', 'language,', 'it', 'is', 'very', 'usefull.']
+            console.log(str.repeat(2))                  // Javascript is very good language, it is very usefull.Javascript is very good language, it is very usefull.
+            console.log(str.slice(20))                  // ood language, it is very usefull.
+            console.log(str.slice(-5))                  // full
+            console.log(str.substr(2, 5))                // vascr
+            console.log(str.substring(2, 5))             // vas
+
+
+
+            //============================> Number Methods <==============================
+
+            let ax = "99";
+            console.log(typeof (ax))                     // string
+            console.log(isFinite(ax))                   // true
+
+            let ac = Number(ax)
+            console.log(typeof (ac))                     // number
+
+            let p = "12 33"
+            console.log(parseInt(p))                    // 12
+
+            let p1 = 11.22
+            console.log(parseInt(p1))                   //11
+
+            let p2 = "11.22 44"
+            console.log(parseInt(p2))                   // 11
+
+            let agee = "200 years"
+            console.log(parseInt(agee))                 // 200
+
+            let agee1 = "years 222"
+            console.log(parseInt(agee1))                // Nan
+
+            let rr = "10.22 is"
+            console.log(parseFloat(rr))                 // 10.22
+
+            console.log(Number.isInteger(rr))           // false
+
+
+
+            //=============================> Math Methods <===============================
+
+            let aq = Math.ceil(1.45)                // 2
+            console.log(aq)
+
+            let aq1 = Math.ceil(-1.45)              // -1
+            console.log(aq1)
+
+            let aq3 = Math.floor(5.70)              // 5
+            console.log(aq3)
+
+            let aq4 = Math.floor(5.30)              // 5
+            console.log(aq4)
+
+            let aq5 = Math.round(5.20)             // 5    roundoff
+            console.log(aq5)
+
+            let aq6 = Math.trunc(6.90)              // 6
+            console.log(aq6)
+
+            console.log(Math.max(5, 8, 7, 4, 0))        // 8
+            console.log(Math.min(5, 8, 7, 4, 0))        // 0
+
+            console.log(Math.sqrt(64))              // 8
+            console.log(Math.cbrt(125))             //5
+            console.log(Math.pow(5, 2))              //25
+            console.log(Math.random())              // any randon number
+            console.log(Math.floor(Math.random() * 10)) + 1      // random no btwn 1 to 10
+            console.log(Math.PI)                    // 3.1415....
+
+
+
+            //================================> Date Object <================================
+            var now = new Date()
+            console.log(now)                        // Sun May 21 2023 23:28:17 GMT+0530 (India Standard Time)
+            console.log(now.toDateString())         // Sun May 21 2023
+            console.log(now.getDate())              // Sun May 21 2023       <- current date
+            console.log(now.getMonth())             //4
+            console.log(now.getDay())               // 0   <-o/p  sunday         1-> monday and so on
+            console.log(now.getFullYear())          // 2023
+            console.log(now.getHours())             // 0
+            console.log(now.getMinutes())           // 13
+
+        </script>
+
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
