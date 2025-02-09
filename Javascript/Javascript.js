@@ -627,3 +627,143 @@ console.log(sym3);
 console.log(sym1 === sym2);
 console.log(sym2 === sym3);
 
+// =================> Set
+// Set object is a collection of unique values. Each value can only occur once in a Set. A Set can hold any value of any data type.
+// Unique Values: A Set automatically removes duplicate values.
+// Iterable: You can iterate over a Set using methods like for...of or forEach.
+// No Indexing: Unlike arrays, a Set does not have index-based access.
+// Mixed Data Types: A Set can store values of different data types (e.g., numbers, strings, objects).
+
+let set1 = new Set();
+set1.add("Newton");
+set1.add("Newton");       // will be added only once 
+set1.add("Issac");
+set1.add("Gravity");
+console.log(set1);
+
+
+let num_set = new Set([11,22,33,44,55]);
+for(let value of num_set){
+  console.log(value);
+}
+console.log('check has 11 : ',num_set.has(11));
+
+num_set.delete(11);
+console.log(num_set);
+
+num_set.clear();
+console.log(num_set);
+
+
+const cars = new Set(["R8","911","Venneno","La","Veron"]);
+const companies = new Set(["Audi","Porshe","Lamborghini","Ferrari"]);
+
+const union = new Set([...cars,...companies]);
+console.log(union);
+console.log(union.size);
+
+for(const value of union){
+  console.log(value);
+}
+
+const intersection = new Set([...cars].filter(x => companies.has(x)));
+console.log('intersection : ',intersection);
+union.clear();
+console.log('union :', union)
+
+
+const nums_set = ([11,22,33,44]);
+// for loop
+for (let i = 0; i < nums_set.length; i++){
+  console.log(nums_set[i]);
+}
+console.log('---------------')
+
+// for of loop
+for (let value of nums_set){
+  console.log(value);
+}
+
+
+(nums_set).forEach((value) => {
+  console.log('value : ',value);
+})
+
+console.log('---------------')
+
+// for each loop
+nums_set.forEach((value) => {
+  console.log(value);
+});
+console.log('---------------')
+
+
+//=================> Map
+// Map object is a collection of key-value pairs. Each key can have only one value. A Map can hold any value of any data type.
+// map() function creates a new array by applying a transformation function to each element of the original array.
+
+const number_list = [1,2,3,4,5]
+function square(x){
+  return x*x
+}
+const squares = number_list.map((num)=>square(num));
+console.log(squares);
+
+const cubes = number_list.map((num)=>num*num*num);
+console.log(cubes);
+
+//=================> Filter
+// filter() function creates a new array by keeping only the elements that pass the test implemented by the provided function.
+// The filter() function creates a new array with all elements that pass a test (predicate function).
+
+const newAry = number_list.filter((num) => num % 2 === 0);  
+console.log(newAry);
+
+//=================> Reduce
+// reduce() function applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
+// reduce() function reduces an array to a single value by applying a reducer function to each element.
+
+const sum_ary = number_list.reduce((accumulator, currentvalue) => accumulator+currentvalue, 0);
+console.log(sum_ary);
+
+
+
+//============================> OBJECTS <=================================
+const employee = {
+  name : 'Sonu', age : 22,salary : 50000, designation : 'Manager',
+  displayInfo : function(){
+    console.log(`..Name : ${this.name}, ..Age : ${this.age}, ..Salary : ${this.salary}`);
+  }
+}
+
+console.log(employee);
+
+employee.displayInfo();
+console.log('Employee name : ',employee.name);
+
+employee.name = 'John Doe';
+console.log('Employee name : ',employee.name);
+
+employee['name'] = 'Johnny Mane';
+console.log('Employee name : ',employee.name);
+
+
+employee[age] = 25;
+employee.displayInfo();
+
+
+
+
+// object constructor
+// function Person(name, age, city){
+//   this.name = name;
+//   this.age = age;
+//   this.city = city;
+//   this.displayInfo = function(){
+//     console.log(`Name : ${this.name}. Age : ${this.age}. City : ${this.city}.`);
+//   }
+// }
+
+// const person1 = new Person('John', 25, 'New York');
+// person1.displayInfo();
+
