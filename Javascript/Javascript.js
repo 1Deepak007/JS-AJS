@@ -303,23 +303,327 @@ const generator1 = twoWayGenerator();
 console.log(generator1.next().value); // "What is your name?"
 console.log(generator1.next("Alice").value); // "Hello, Alice!"
 
-
 //=================> Spread operator
-const subjects = ['Physics','Chemistry','Biology']
-console.log(subjects)
-console.log(...subjects)
+const subjects = ["Physics", "Chemistry", "Biology"];
+console.log(subjects);
+console.log(...subjects);
 
-let newSubjects = ['Mathematics', ...subjects];
-console.log(...newSubjects)
+let newSubjects = ["Mathematics", ...subjects];
+console.log(...newSubjects);
 
-function sum(...nums){
-    let total = 0;
-    for(let i=0; i<nums.length; i++){
-        total += nums[i]
-    }
-    return total
+function sum(...nums) {
+  let total = 0;
+  for (let i = 0; i < nums.length; i++) {
+    total += nums[i];
+  }
+  return total;
 }
-console.log(sum(1,2,3,4,5))
-
+console.log(sum(1, 2, 3, 4, 5));
 
 //==================> If Statement <===================
+let agee = 15;
+if (agee >= 18) {
+  console.log("You are eligible to vote");
+} else {
+  console.log("You are not eligible to vote");
+}
+
+console.log(agee >= 18 ? "Eligible to vote" : "Not eligible to vote");
+
+//==================> While Loop <===================
+let numm = 1;
+while (numm <= 5) {
+  console.log(`count : ${numm}`);
+  numm++;
+}
+
+//=================> Do While Loop <=================
+let a = 1;
+do {
+  console.log(`Value of a : ${a}`);
+  a++;
+} while (a <= 3);
+
+//=================>   For Loop   <====================
+for (let i = 1; i <= 5; i++) {
+  console.log(`Count : ${i}`);
+}
+
+//================> For Each Loop <===================
+let nos = [1, 2, 3, 4, 5];
+nos.forEach((num) => {
+  console.log(`Square of ${num} : ${num * num}`);
+});
+
+//================> For in loop  <=====================
+let cities = ["New York", "London", "Paris", "Tokyo", "Sydney"];
+for (let i in cities) {
+  console.log(`City : ${cities[i]}`);
+}
+
+let myobj = {
+  name: "Krishna",
+  age: 20,
+  address: {
+    city: "Lucknow",
+    country: "India",
+  },
+};
+for (let key in myobj) {
+  console.log(`${key} : ${myobj[key]}`);
+}
+
+let str = "Hello";
+for (let char of str) {
+  console.log(char);
+}
+
+//=================> For of Loop <=======================
+let numbers = [1, 2, 3, 4, 5];
+for (let num of numbers) {
+  console.log(`Square of ${num} : ${num * num}`);
+}
+
+//=======================> LOOP CONTROL STATEMENTS
+// break
+for (let i = 1; i <= 5; i++) {
+  if (i == 3) {
+    break;
+  }
+  console.log(`Count : ${i}`);
+}
+
+// continue
+for (let i = 1; i <= 5; i++) {
+  if (i == 3) {
+    continue;
+  }
+  console.log(`Num : ${i}`);
+}
+
+// label :  'label' is not a keyword, but you can use any identifier followed by a colon (:) to give a label to the loop. After that, you can use the label to target the particular loop with the break and continue keyword.
+outerloop: for (let i = 0; i < 3; i++) {
+  console.log("Outerloop: " + i);
+  innerloop: for (let j = 0; j < 3; j++) {
+    if (j > 3) break; // Quit the innermost loop
+    if (i == 2) break innerloop; // Do the same thing
+    if (i == 4) break outerloop; // Quit the outer loop
+    console.log("Innerloop: " + j);
+  }
+}
+console.log("Exiting the loop!");
+
+// Switch
+let day = "Monday";
+switch (day) {
+  case "Monday":
+    console.log("Today is Monday");
+    break;
+  case "Tuesday":
+    console.log("Today is Tuesday");
+    break;
+  default:
+    console.log("Today is not Monday or Tuesday");
+    break;
+}
+
+//========================> Custom Iterator
+function customIterator(array) {
+  let index = 0;
+  return {
+    next() {
+      if (index < array.length) {
+        return { value: array[index++], done: false };
+      } else {
+        return { done: true };
+      }
+    },
+  };
+}
+
+const myArray = [1, 2];
+const iterator = customIterator(myArray);
+console.log(iterator.next()); // {value: 1, done: false}
+console.log(iterator.next()); // {value: 2, done: false}
+console.log(iterator.next()); // {value: undefined, done: true}
+
+//------------------------------------------------------------------------------
+//==========================> FUNCTIONS <=======================================
+//------------------------------------------------------------------------------
+
+function greet() {
+  console.log("Hello");
+}
+greet();
+
+function add(a, b) {
+  console.log(a + b);
+}
+add(4, 5);
+
+function sum(...nums) {
+  let total = 0;
+  for (let i = 0; i < nums.length; i++) {
+    total += nums[i];
+  }
+  return total;
+}
+console.log(sum(2, 2, 4, 4, 5));
+
+let n1 = [2, 2, 2, 2, 2];
+console.log(sum(...n1));
+
+// Default parameters
+function greet_user(name = "User") {
+  console.log(`Hello ${name}`);
+}
+greet_user();
+greet_user("Ishita");
+
+//===================>  Function Hosting
+// function hoisting in JavaScript is a default behavior in which function declarations are moved at the top of their local scope before execution of the code.
+square_root(25);
+function square_root(num) {
+  console.log(Math.sqrt(num));
+}
+
+//==================>  Self Invoking
+// self-invoking functions are JavaScript functions that execute immediately as they are defined
+
+(function () {
+  console.log("I am a self-invoking function");
+})();
+
+(function (name) {
+  console.log(`Hello ${name}. I am self invoking function`);
+})("Deepak");
+
+//==================> Arrow Function
+// arrow functions in JavaScript allow us to create a shorter and anonymous function. Arrow functions are written without "function" keyword.
+
+const sq = (num) => num * num;
+console.log(sq(5));
+
+const sqrt = (num) => {
+  return Math.sqrt(num);
+};
+console.log(sqrt(25));
+
+//==================> Closure
+// Closure is a special combination of a function bundled with the lexical environment within which that function was declared.
+
+function outer() {
+  console.log("The outer function is executed! ");
+  function inner() {
+    console.log("The inner function is executed! ");
+  }
+  inner();
+}
+outer();
+
+function createCounter() {
+  let count = 0;
+  return function () {
+    return count++;
+  };
+}
+const counter = createCounter();
+console.log(counter()); // 0
+console.log(counter()); // 1
+
+//==================> Recursion
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+console.log(factorial(5));
+
+
+//=================> Variable scope
+var user = 'Ishita Kirti Gautam';   // global scope
+function func() {
+  let func1 = 10;
+  {
+     var func2 = 9; // function scope
+     let func3 = 100; // Block scope
+     const func4 = 220; // Block scope
+  }
+  // x is accessible here, but not y & z
+  console.log(func1);
+  console.log(func2);
+  console.log(user);
+  // console.log(func3);
+  // console.log(func4);
+}
+
+func();
+
+
+
+//------------------------------------------------------------------------
+//===============================> REGEX <================================
+//------------------------------------------------------------------------
+
+// i :Perform case-insensitive matching.
+// m :Specifies that if the string has newline or carriage return characters, the ^ and $ operators will now match against a newline boundary, instead of a string boundary
+// g :Performs a global matchthat is, find all matches rather than stopping after the first match.
+// [...] : Any one character between the brackets.
+// [^...] : Any one character not between the brackets.
+// [0-9] : It matches any decimal digit from 0 through 9.
+// [a-z] : It matches any character from lowercase a through lowercase z.
+// [A-Z] : It matches any character from uppercase A through uppercase Z.
+// [a-Z] : It matches any character from lowercase a through uppercase Z.
+
+let str1 = "Javascript is very good language, it is very usefull.";
+let re = /very/gi;
+let result_str = str1.match(re);
+console.log(result_str);
+
+let res = new RegExp("very", "gi");
+let res1 = str1.match(res);
+console.log(res1);
+
+
+// test() : Checks if a string matches the regex pattern. Returns true or false.
+let str2 = "Hello world. This is Javascript. Hello world.";
+console.log(/hi world/.test(str2));
+console.log(/hello world/.test(str2));
+console.log(/Hello/.test(str2));
+
+
+// exec() : Returns an array containing the matched substring, or null if no match is found.
+console.log(/world/.exec(str2));
+
+
+// match() : Returns an array containing the matched substring, or null if no match is found.
+console.log(str2.match(/world/));
+
+
+// search() : Returns the index of the first match, or -1 if no match is found.
+console.log(str2.search(/world/));
+
+// replace() : Returns a string with the matched substrings replaced by the replacement string.
+console.log(str2.replace(/world/g, "planet"));
+
+// replaceAll() : Returns a string with all matches of the pattern replaced by the replacement string.
+console.log(str2.replaceAll(/world/g, "planet"));
+
+// split() : Returns an array of substrings split by the separator.
+console.log(str2.split(/ /));
+
+
+// =================> Symbols : 
+// Symbols are immutable and unique, unlike to other primitive data types like strings or numbers. They are especially helpful in situations where a unique identifier is required since they offer a way to create private object properties and avoid naming conflicts.
+
+const sym1 = Symbol();
+const sym2 = Symbol("key");
+const sym3 = Symbol("key");
+console.log(sym1);
+console.log(sym2);
+console.log(sym3);
+console.log(sym1 === sym2);
+console.log(sym2 === sym3);
+
